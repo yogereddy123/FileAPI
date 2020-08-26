@@ -1,4 +1,4 @@
-package springboot.fileuploaddownload;
+package com.infrrd.fileapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package springboot.fileuploaddownload.controller;
+package com.infrrd.fileapi.controller;
 
 import java.io.IOException;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.fileuploaddownload.service.FileStorageService;
+import com.infrrd.fileapi.service.FileStorageService;
 
 @RestController
 public class FileDeleteController {

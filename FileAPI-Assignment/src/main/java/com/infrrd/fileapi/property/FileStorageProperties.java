@@ -1,4 +1,4 @@
-package springboot.fileuploaddownload.property;
+package com.infrrd.fileapi.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

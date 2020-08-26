@@ -1,4 +1,4 @@
-package springboot.fileuploaddownload.payload;
+package com.infrrd.fileapi.payload;
 
 
 public class Response {

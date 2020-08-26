@@ -4,13 +4,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.fileapi.springboot</groupId>
-	<artifactId>springboot-upload-download-file-rest-api-example</artifactId>
+	<groupId>com.infrrd.fileapi</groupId>
+	<artifactId>FileAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springboot-upload-download-file-rest-api-example</name>
-	<description>Demo project for Spring Boot</description>
+	<name>FileAPI</name>
+	<description>Sample Project on FileAPI</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

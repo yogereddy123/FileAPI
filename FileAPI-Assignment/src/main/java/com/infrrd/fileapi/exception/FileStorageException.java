@@ -1,4 +1,4 @@
-package springboot.fileuploaddownload.exception;
+package com.infrrd.fileapi.exception;
 
 public class FileStorageException extends RuntimeException {
 	

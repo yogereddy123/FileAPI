@@ -1,4 +1,4 @@
-package springboot.fileuploaddownload.service.impl;
+package com.infrrd.fileapi.service.impl;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,11 +16,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import springboot.fileuploaddownload.controller.FileDeleteController;
-import springboot.fileuploaddownload.exception.FileNotFoundException;
-import springboot.fileuploaddownload.exception.FileStorageException;
-import springboot.fileuploaddownload.property.FileStorageProperties;
-import springboot.fileuploaddownload.service.FileStorageService;
+import com.infrrd.fileapi.exception.FileNotFoundException;
+import com.infrrd.fileapi.exception.FileStorageException;
+import com.infrrd.fileapi.property.FileStorageProperties;
+import com.infrrd.fileapi.service.FileStorageService;
 
 @Service
 public class FileStorageServiceImpl implements FileStorageService {
@@ -44,27 +43,28 @@ public class FileStorageServiceImpl implements FileStorageService {
         }
     }
 
+   
+    
+    
     @Override
-    public String createFile(MultipartFile file) {
-    	
-    	logger.info("Entered into createFile{}");
-        // Normalize file name
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
-        try {
-            // Check if the file's name contains invalid characters
-            if (fileName.contains("..")) {
-                throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
+    public String copyFile(String fileName) throws IOException {
+           
+    	try {
+            Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
+            Resource resource = new UrlResource(filePath.toUri());
+            String targetFileName= "Copy_"+fileName;
+            if (resource.exists()) {
+            	Path targetLocation = this.fileStorageLocation.resolve(targetFileName);
+            	//Files.copy( filePath, targetLocation);
+            	Files.copy(filePath, targetLocation,StandardCopyOption.REPLACE_EXISTING);
+            	return " copy of the file is completed.";
+            } else {
+                throw new FileNotFoundException("File not found " + fileName);
             }
-
-            // Copy file to the target location (Replacing existing file with the same name)
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
-            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-
-            return fileName;
-        } catch (IOException ex) {
-            throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
+        } catch (MalformedURLException ex) {
+            throw new FileNotFoundException("File not found " + fileName, ex);
         }
+    	
     }
 
     @Override
