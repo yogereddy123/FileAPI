@@ -1,4 +1,4 @@
-package net.javaguides.springboot.fileuploaddownload;
+package com.infrrd.fileapi;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,8 +7,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringbootUploadDownloadFileApplicationTests {
-
+public class FileApplicationTest {
+	
 	@Test
 	public void contextLoads() {
 	}
